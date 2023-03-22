@@ -2,7 +2,6 @@ package com.laiszig.my_movie_plan_backend.service;
 
 import com.laiszig.my_movie_plan_backend.entities.Genre;
 import com.laiszig.my_movie_plan_backend.repository.GenreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,15 +19,15 @@ public class GenreService {
         return genreRepository.findAll();
     }
 
-    public void saveCategory(Genre category) {
+    public void saveGenre(Genre category) {
         genreRepository.save(category);
     }
 
-    public Genre getCategory(Integer id) {
+    public Genre getGenre(Integer id) {
         return genreRepository.findById(id).get();
     }
 
-    public void deleteCategory(Integer id) {
+    public void deleteGenre(Integer id) {
         genreRepository.deleteById(id);
     }
 }

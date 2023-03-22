@@ -3,12 +3,16 @@ package com.laiszig.my_movie_plan_backend.controller;
 import com.laiszig.my_movie_plan_backend.entities.Genre;
 import com.laiszig.my_movie_plan_backend.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping(path = "/genre")
 public class GenreController {
 
     private final GenreService genreService;
@@ -18,8 +22,35 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/genre")
+    @GetMapping("/")
     public List<Genre> getAll() {
         return genreService.findAll();
     }
+
+    @PostMapping("/")
+    public ResponseEntity<Genre> saveCategory(@RequestBody Genre genre) {
+        genreService.saveGenre(genre);
+        return new ResponseEntity<>(genre, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Genre> getGenre(@PathVariable Integer id) {
+        try {
+            Genre genre = genreService.getGenre(id);
+            return new ResponseEntity<>(genre, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Genre> deleteGenre(@PathVariable Integer id) {
+        try {
+            genreService.deleteGenre(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
