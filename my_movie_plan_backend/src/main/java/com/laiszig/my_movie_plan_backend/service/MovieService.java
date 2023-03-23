@@ -2,6 +2,7 @@ package com.laiszig.my_movie_plan_backend.service;
 
 import com.laiszig.my_movie_plan_backend.commons.ItemAlreadyExistsException;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
+import com.laiszig.my_movie_plan_backend.repository.GenreRepository;
 import com.laiszig.my_movie_plan_backend.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,11 @@ import java.util.List;
 public class MovieService {
 
     private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
 
-    public MovieService(MovieRepository movieRepository) {
+    public MovieService(MovieRepository movieRepository, GenreRepository genreRepository) {
         this.movieRepository = movieRepository;
+        this.genreRepository = genreRepository;
     }
 
     public List<Movie> findAll() {
@@ -24,9 +27,20 @@ public class MovieService {
         if(movieRepository.existsByName(movie.getName())) {
             throw new ItemAlreadyExistsException("The Movie " + movie.getName() + " has already been inserted.");
         } else {
+            movie.setName(movie.getName());
+            movie.setDescription(movie.getDescription());
+            movie.setDirector(movie.getDirector());
+            movie.setYear(movie.getYear());
+            movie.setLanguage(movie.getLanguage());
+            movie.setGenre(genreRepository.findById(movie.getGenre().getId()).get());
             movieRepository.save(movie);
         }
     }
+
+    public List<Movie> searchByCategory (Integer id){
+        return movieRepository.findByGenreId(id);
+    }
+
 
     public Movie getMovie(Integer id) {
         return movieRepository.findById(id).get();

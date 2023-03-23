@@ -1,5 +1,6 @@
 package com.laiszig.my_movie_plan_backend.controller;
 
+import com.laiszig.my_movie_plan_backend.controller.request.MovieSearchRequest;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,14 @@ public class MovieController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Movie> saveCategory(@RequestBody Movie movie) {
+    public ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         movieService.saveMovie(movie);
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/search")
+    public List<Movie> searchMovie(@RequestBody MovieSearchRequest search) {
+        return movieService.searchByCategory(search.getGenreId());
     }
 
     @GetMapping("/{id}")
