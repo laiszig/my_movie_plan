@@ -1,5 +1,6 @@
 package com.laiszig.my_movie_plan_backend.service;
 
+import com.laiszig.my_movie_plan_backend.commons.ItemAlreadyExistsException;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.repository.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,11 @@ public class MovieService {
     }
 
     public void saveMovie(Movie movie) {
-        movieRepository.save(movie);
+        if(movieRepository.existsByName(movie.getName())) {
+            throw new ItemAlreadyExistsException("The Movie " + movie.getName() + " has already been inserted.");
+        } else {
+            movieRepository.save(movie);
+        }
     }
 
     public Movie getMovie(Integer id) {

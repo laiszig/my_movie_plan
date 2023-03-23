@@ -1,5 +1,6 @@
 package com.laiszig.my_movie_plan_backend.service;
 
+import com.laiszig.my_movie_plan_backend.commons.ItemAlreadyExistsException;
 import com.laiszig.my_movie_plan_backend.entities.Genre;
 import com.laiszig.my_movie_plan_backend.repository.GenreRepository;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,12 @@ public class GenreService {
         return genreRepository.findAll();
     }
 
-    public void saveGenre(Genre movie) {
-        genreRepository.save(movie);
+    public void saveGenre(Genre genre) {
+        if(genreRepository.existsByName(genre.getName())) {
+            throw new ItemAlreadyExistsException("The Genre " + genre.getName() + " has already been inserted.");
+        } else {
+            genreRepository.save(genre);
+        }
     }
 
     public Genre getGenre(Integer id) {
