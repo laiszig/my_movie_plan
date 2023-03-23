@@ -19,8 +19,8 @@ public class GenreService {
         return genreRepository.findAll();
     }
 
-    public void saveGenre(Genre category) {
-        genreRepository.save(category);
+    public void saveGenre(Genre movie) {
+        genreRepository.save(movie);
     }
 
     public Genre getGenre(Integer id) {
