@@ -2,6 +2,7 @@ package com.laiszig.my_movie_plan_backend.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,4 +36,7 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "genre_id", nullable = true)
     private Genre genre;
+
+    @Column(name = "movie_status")
+    private Boolean status = true;
 }

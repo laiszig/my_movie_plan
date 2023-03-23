@@ -59,4 +59,13 @@ public class MovieController {
         }
     }
 
+    @PostMapping("/{id}/status")
+    public ResponseEntity<String> updateStatus(@PathVariable Integer id) {
+        Movie movie = movieService.getMovie(id);
+        if (movie == null) {
+            return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
+        }
+        movieService.changeStatus(movie);
+        return new ResponseEntity<>("Status changed successfully", HttpStatus.OK);
+    }
 }
