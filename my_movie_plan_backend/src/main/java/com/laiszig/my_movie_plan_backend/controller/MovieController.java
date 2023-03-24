@@ -36,7 +36,7 @@ public class MovieController {
 
     @PostMapping("/search")
     public List<Movie> searchMovie(@RequestBody MovieSearchRequest search) {
-        return movieService.searchByCategory(search.getGenreId());
+        return movieService.searchByGenre(search.getGenreId());
     }
 
     @GetMapping("/{id}")

@@ -39,7 +39,7 @@ public class MovieService {
         }
     }
 
-    public List<Movie> searchByCategory (Integer id){
+    public List<Movie> searchByGenre(Integer id){
         return movieRepository.findByGenreId(id);
     }
 
