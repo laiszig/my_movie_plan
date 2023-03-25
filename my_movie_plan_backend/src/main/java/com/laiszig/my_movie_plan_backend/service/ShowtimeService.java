@@ -39,6 +39,8 @@ public class ShowtimeService {
         return showtimeRepository.findByTime(time);
     }
 
-
+    public void deleteShowtime(Integer id) {
+        showtimeRepository.deleteById(id);
+    }
 
 }
