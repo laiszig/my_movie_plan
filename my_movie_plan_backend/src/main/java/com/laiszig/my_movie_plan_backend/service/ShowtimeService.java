@@ -1,5 +1,6 @@
 package com.laiszig.my_movie_plan_backend.service;
 
+import com.laiszig.my_movie_plan_backend.controller.request.ShowtimeRequest;
 import com.laiszig.my_movie_plan_backend.entities.Showtime;
 import com.laiszig.my_movie_plan_backend.repository.MovieRepository;
 import com.laiszig.my_movie_plan_backend.repository.ShowtimeRepository;
@@ -21,8 +22,6 @@ public class ShowtimeService {
     }
 
     public void saveShowtime(Showtime showtime) {
-        LocalDate localDate = LocalDate.parse(showtime.getTime());
-        showtime.setTime(localDate.toString());
         showtime.setTime(showtime.getTime());
         if (showtime.getMovie() == null) {
             showtime.setMovie(null);

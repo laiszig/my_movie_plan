@@ -25,5 +25,5 @@ public class Showtime {
     private Movie movie;
 
     @Column(name = "showtime")
-    private String time;
+    private LocalTime time;
 }
