@@ -1,0 +1,43 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<p>movie-list works!</p>
+
+
+<h1>Product List Component</h1>
+
+<!-- <select (change)="categorySelection($event)">
+    <option value="0">All Categories</option>
+    <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+</select> -->
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Movie</th>
+      <th>Year</th>
+      <th>Description</th>
+      <th>Director</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.id}}</td>
+      <td>{{ movie.name }}</td>
+      <td>{{ movie.year }}</td>
+      <td>{{ movie.description }}</td>
+      <td>
+        <!-- <button (click)="btnClick(product.id, product.name, product.price)"  type="button" class="btn btn-success">
+          Add
+        </button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
