@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping(path = "/genre")
+@CrossOrigin(origins = "http://localhost:4200")
 public class GenreController {
 
     private final GenreService genreService;
@@ -22,18 +22,18 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/genre")
     public List<Genre> getAll() {
         return genreService.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/genre")
     public ResponseEntity<Genre> saveCategory(@RequestBody Genre genre) {
         genreService.saveGenre(genre);
         return new ResponseEntity<>(genre, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/genre/{id}")
     public ResponseEntity<Genre> getGenre(@PathVariable Integer id) {
         try {
             Genre genre = genreService.getGenre(id);
@@ -43,7 +43,7 @@ public class GenreController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/genre/{id}")
     public ResponseEntity<Genre> deleteGenre(@PathVariable Integer id) {
         try {
             genreService.deleteGenre(id);

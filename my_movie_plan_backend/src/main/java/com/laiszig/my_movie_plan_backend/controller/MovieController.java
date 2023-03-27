@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@CrossOrigin(
-        origins = "http://localhost:4200"
-)
+@CrossOrigin(origins = "http://localhost:4200")
 public class MovieController {
 
     private final MovieService movieService;
