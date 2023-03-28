@@ -18,7 +18,7 @@ export class MovieService {
     return this.http.get<Movie[]>(this.url + "/movies");
   }
 
-  getMoviesByGenre(id: any): Observable<Genre[]> {
+  getMoviesByGenre(id: any): Observable<Movie[]> {
     return this.http.post<Movie[]>(this.url + "/searchmovies", {"genreId" : id})
   }
 }

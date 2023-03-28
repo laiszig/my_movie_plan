@@ -35,6 +35,17 @@ export class MovieListComponent implements OnInit {
       .subscribe((result) => (this.genres = result));
   }
 
-
+  genreSelection = (event: any) => {
+    const genreId = event.target.value;
+    if (genreId != 0) {
+      this.movieService
+      .getMoviesByGenre(genreId)
+      .subscribe((result) => (this.movies = result));
+    } else {
+      this.movieService
+      .getAllMovies()
+      .subscribe((result) => (this.movies = result));
+    }
+  }
 
 }

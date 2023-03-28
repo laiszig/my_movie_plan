@@ -3,18 +3,13 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 
-<p>movie-list works!</p>
+<h1>Movie List Component</h1>
 
-
-<h1>Product List Component</h1>
-
-<!-- <select (change)="categorySelection($event)">
-    <option value="0">All Categories</option>
-    <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
-</select> -->
+<select (change)="genreSelection($event)">
+    <option value="0">All Genres</option>
+    <option *ngFor="let genre of genres" value="{{ genre.id }}">{{ genre.name }}</option>
+</select>
 
 <table>
   <thead>
