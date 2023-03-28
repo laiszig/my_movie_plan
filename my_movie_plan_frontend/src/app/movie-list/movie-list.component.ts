@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Genre } from '../genre-sort/genre';
+import { GenreService } from '../genre-sort/genre.service';
 import { Movie } from './movie';
 import { MovieService } from './movie.service';
 
@@ -13,10 +15,12 @@ export class MovieListComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private genreService: GenreService
   ) {}
 
   movies: Movie[];
+  genres: Genre[];
 
   ngOnInit(): void {
     this.movieService
@@ -26,18 +30,11 @@ export class MovieListComponent implements OnInit {
 
         this.movies = result
       });
+      this.genreService
+      .getAllGenres()
+      .subscribe((result) => (this.genres = result));
   }
 
-  // btnClick = (id: number, name: string, language: string,
-  //   director: string, description: string, year: number) => {
-  //   let movie = new Movie()
-  //   movie.id = id
-  //   movie.name = name;
-  //   movie.director = director;
-  //   movie.description = description;
-  //   movie.year = year;
-  //   movie.language = language;
-  //   // this.movieService.addToCart(movie)
-  // };
+
 
 }

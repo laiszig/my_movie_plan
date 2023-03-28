@@ -1,3 +1,5 @@
+import { Genre } from "../genre-sort/genre";
+
 export class Movie {
 
     id: number;
@@ -6,8 +8,7 @@ export class Movie {
     director: string;
     language: string;
     description: string;
-    // genre: Genre;
+    genre: Genre;
     status: boolean;
-    
     
 }
