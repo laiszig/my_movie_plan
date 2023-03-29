@@ -22,18 +22,18 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/genre")
+    @GetMapping("/genres")
     public List<Genre> getAll() {
         return genreService.findAll();
     }
 
-    @PostMapping("/genre")
+    @PostMapping("/genres")
     public ResponseEntity<Genre> saveCategory(@RequestBody Genre genre) {
         genreService.saveGenre(genre);
         return new ResponseEntity<>(genre, HttpStatus.CREATED);
     }
 
-    @GetMapping("/genre/{id}")
+    @GetMapping("/genres/{id}")
     public ResponseEntity<Genre> getGenre(@PathVariable Integer id) {
         try {
             Genre genre = genreService.getGenre(id);
@@ -43,7 +43,7 @@ public class GenreController {
         }
     }
 
-    @DeleteMapping("/genre/{id}")
+    @DeleteMapping("/genres/{id}")
     public ResponseEntity<Genre> deleteGenre(@PathVariable Integer id) {
         try {
             genreService.deleteGenre(id);

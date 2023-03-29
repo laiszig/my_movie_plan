@@ -29,18 +29,18 @@ public class MovieController {
         return movieService.findAll();
     }
 
-    @PostMapping("/movies")
+    @PostMapping("/addmovie")
     public ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         movieService.saveMovie(movie);
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
 
-    @PostMapping("movies/search")
+    @PostMapping("/searchmovies")
     public List<Movie> searchMovie(@RequestBody MovieSearchRequest search) {
         return movieService.searchByGenre(search.getGenreId());
     }
 
-    @GetMapping("movies/{id}")
+    @GetMapping("/movies/{id}")
     public ResponseEntity<Movie> getMovie(@PathVariable Integer id) {
         try {
             Movie movie = movieService.getMovie(id);
