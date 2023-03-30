@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Genre } from '../genre-sort/genre';
 import { GenreService } from '../genre-sort/genre.service';
 import { Movie } from '../movie-list/movie';
-import { MovieService } from '../movie-list/movie.service';
 import { AddMovieService } from './add-movie.service';
 
 @Component({
@@ -14,8 +12,6 @@ import { AddMovieService } from './add-movie.service';
 export class AddMovieComponent {
 
   constructor(
-    private router: Router,
-    private movieService: MovieService,
     private genreService: GenreService,
     private addMovieService: AddMovieService
   ) {}
