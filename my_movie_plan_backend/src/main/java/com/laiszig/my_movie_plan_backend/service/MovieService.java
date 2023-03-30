@@ -1,6 +1,7 @@
 package com.laiszig.my_movie_plan_backend.service;
 
 import com.laiszig.my_movie_plan_backend.commons.ItemAlreadyExistsException;
+import com.laiszig.my_movie_plan_backend.entities.Genre;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.repository.GenreRepository;
 import com.laiszig.my_movie_plan_backend.repository.MovieRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,6 +38,42 @@ public class MovieService {
             movie.setLanguage(movie.getLanguage());
             movie.setGenre(genreRepository.findById(movie.getGenre().getId()).get());
             movieRepository.save(movie);
+        }
+    }
+
+    public void updateMovie(Integer movieId, String name, Integer year, String director, String language, String description, Genre genre) {
+        Optional<Movie> optionalMovie = movieRepository.findById(movieId);
+
+        if (optionalMovie.isPresent()) {
+            Movie movie = optionalMovie.get();
+
+            if (name != null) {
+                movie.setName(name);
+            }
+
+            if (year != null) {
+                movie.setYear(year);
+            }
+
+            if (director != null) {
+                movie.setDirector(director);
+            }
+
+            if (language != null) {
+                movie.setLanguage(language);
+            }
+
+            if (description != null) {
+                movie.setDescription(description);
+            }
+
+            if (genre != null) {
+                movie.setGenre(genre);
+            }
+
+            movieRepository.save(movie);
+        } else {
+            throw new IllegalArgumentException("Movie not found with ID: " + movieId);
         }
     }
 

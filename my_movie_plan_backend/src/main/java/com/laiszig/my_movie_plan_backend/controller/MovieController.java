@@ -1,5 +1,6 @@
 package com.laiszig.my_movie_plan_backend.controller;
 
+import com.laiszig.my_movie_plan_backend.controller.request.MovieRequest;
 import com.laiszig.my_movie_plan_backend.controller.request.MovieSearchRequest;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.service.MovieService;
@@ -68,6 +69,13 @@ public class MovieController {
         }
         movieService.changeStatus(movie);
         return new ResponseEntity<>("Status changed successfully", HttpStatus.OK);
+    }
+
+    @PutMapping("updatemovie/{id}")
+    public ResponseEntity<String> updateMovie(@PathVariable("id") Integer movieId, @RequestBody MovieRequest movieRequest) {
+        movieService.updateMovie(movieId, movieRequest.getName(), movieRequest.getYear(), movieRequest.getDirector(), movieRequest.getLanguage(), movieRequest.getDescription(), movieRequest.getGenre());
+
+        return new ResponseEntity<>("Movie updated successfully", HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.OPTIONS)
