@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class MovieRequest {
 
-        private Integer id;
         private String name;
         private Integer year;
         private String director;
