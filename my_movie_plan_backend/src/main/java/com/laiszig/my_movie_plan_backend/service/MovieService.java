@@ -41,7 +41,8 @@ public class MovieService {
         }
     }
 
-    public void updateMovie(Integer movieId, String name, Integer year, String director, String language, String description, Genre genre) {
+    public void updateMovie(Integer movieId, String name, Integer year,
+                            String director, String language, String description, Genre genre) {
         Optional<Movie> optionalMovie = movieRepository.findById(movieId);
 
         if (optionalMovie.isPresent()) {

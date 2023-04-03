@@ -29,7 +29,7 @@ public class ShowtimeController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Showtime> saveMovie(@RequestBody Showtime showtime) {
+    public ResponseEntity<Showtime> addShowtime(@RequestBody Showtime showtime) {
         showtimeService.saveShowtime(showtime);
         return new ResponseEntity<>(showtime, HttpStatus.CREATED);
     }

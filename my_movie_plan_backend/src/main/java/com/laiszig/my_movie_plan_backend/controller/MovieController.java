@@ -73,18 +73,9 @@ public class MovieController {
 
     @PutMapping("updatemovie/{id}")
     public ResponseEntity<String> updateMovie(@PathVariable("id") Integer movieId, @RequestBody MovieRequest movieRequest) {
-        movieService.updateMovie(movieId, movieRequest.getName(), movieRequest.getYear(), movieRequest.getDirector(), movieRequest.getLanguage(), movieRequest.getDescription(), movieRequest.getGenre());
+        movieService.updateMovie(movieId, movieRequest.getName(), movieRequest.getYear(),
+                movieRequest.getDirector(), movieRequest.getLanguage(), movieRequest.getDescription(), movieRequest.getGenre());
 
         return new ResponseEntity<>("Movie updated successfully", HttpStatus.OK);
     }
-
-    @RequestMapping(method = RequestMethod.OPTIONS)
-    public ResponseEntity handleOptions() {
-        return ResponseEntity.ok()
-                .header(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "http://localhost:4200")
-                .header(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, PUT, DELETE, OPTIONS")
-                .header(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "Content-Type, Authorization")
-                .build();
-    }
-
 }
