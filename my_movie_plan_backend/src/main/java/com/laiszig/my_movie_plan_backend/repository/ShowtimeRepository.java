@@ -12,4 +12,5 @@ import java.util.List;
 public interface ShowtimeRepository extends JpaRepository<Showtime, Integer> {
 
     List<Showtime> findByTime(LocalTime time);
+    List<Showtime> findByMovieId(Integer id);
 }

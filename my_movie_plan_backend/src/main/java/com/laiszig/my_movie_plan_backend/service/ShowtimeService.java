@@ -1,14 +1,12 @@
 package com.laiszig.my_movie_plan_backend.service;
 
 import com.laiszig.my_movie_plan_backend.commons.MovieNotFoundException;
-import com.laiszig.my_movie_plan_backend.controller.request.ShowtimeRequest;
 import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.entities.Showtime;
 import com.laiszig.my_movie_plan_backend.repository.MovieRepository;
 import com.laiszig.my_movie_plan_backend.repository.ShowtimeRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +36,10 @@ public class ShowtimeService {
 
     public List<Showtime> findByShowtime(LocalTime time) {
         return showtimeRepository.findByTime(time);
+    }
+
+    public List<Showtime> findByMovieId(Integer movieId) {
+        return showtimeRepository.findByMovieId(movieId);
     }
 
     public void deleteShowtime(Integer id) {

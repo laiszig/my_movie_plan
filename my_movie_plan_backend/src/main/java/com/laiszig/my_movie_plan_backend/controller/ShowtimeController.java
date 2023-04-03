@@ -1,8 +1,6 @@
 package com.laiszig.my_movie_plan_backend.controller;
 
-import com.laiszig.my_movie_plan_backend.controller.request.MovieSearchRequest;
 import com.laiszig.my_movie_plan_backend.controller.request.ShowtimeRequest;
-import com.laiszig.my_movie_plan_backend.entities.Movie;
 import com.laiszig.my_movie_plan_backend.entities.Showtime;
 import com.laiszig.my_movie_plan_backend.service.ShowtimeService;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -37,6 +34,11 @@ public class ShowtimeController {
     @PostMapping("/search")
     public List<Showtime> searchByShowtime(@RequestBody ShowtimeRequest request) {
         return showtimeService.findByShowtime(request.getTime());
+    }
+
+    @PostMapping("/search/{movieId}")
+    public List<Showtime> searchByMovieId(@PathVariable Integer movieId) {
+        return showtimeService.findByMovieId(movieId);
     }
 
     @DeleteMapping("/{id}")
