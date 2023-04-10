@@ -24,6 +24,16 @@ export class ShowtimeListComponent {
   movie: Movie;
   
   ngOnInit(): void {
+
+    this.activatedRoute.queryParams.subscribe((movie: any) =>{
+      this.showtimeService.getShowtimeByMovieId(movie.movieId)
+        .subscribe((result) => {
+          this.showtimes = result;
+          console.log(result)
+        });
+
+    })
+    /*
     this.movieService
       .getAllMovies()
       .subscribe((result) => {
@@ -33,6 +43,7 @@ export class ShowtimeListComponent {
       this.showtimeService
       .getAllShowtimes()
       .subscribe((result) => (this.showtimes = result));
+      */
   }
 
   movieSelection = (event: any) => {

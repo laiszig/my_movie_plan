@@ -11,6 +11,7 @@ import { MovieService } from 'src/app/movie-list/movie.service';
 export class ShowtimeListService {
 
   url: string = 'http://localhost:8080';
+  
 
   constructor(private http: HttpClient, private router: Router, private movieService: MovieService) { }
 
@@ -18,19 +19,11 @@ export class ShowtimeListService {
     return this.http.get<Showtime[]>(this.url + "/showtime");
   }
 
-  getShowtimeByMovieId(id: any): Observable<Showtime[]> {
-    return this.http.post<Showtime[]>(this.url + "/showtime/search", {"movieId" : id})
+  getShowtimeByMovieId(id: number): Observable<Showtime[]> {
+    return this.http.get<Showtime[]>(this.url + "/showtime/search/" + id)
   }
   
   getMovieShowtimes(movieId: number) {
-    console.log("movie id: " + movieId)
-    this.movieService.getMovieById(movieId).subscribe(movie => {
-      //window.location.href = `http://localhost:4200/listshowtime?movieId=${movie.id}`;
-      
-      this.router.navigate([`/listshowtime`], {queryParams: { movieId: movieId} })
-    });
-
-  
-
+    this.router.navigate([`/listshowtime`], {queryParams: { movieId: movieId} });
 }
 }
