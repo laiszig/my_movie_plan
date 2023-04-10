@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genre } from '../genre-sort/genre';
 import { GenreService } from '../genre-sort/genre.service';
+import { ShowtimeListService } from '../showtime/showtime-list/showtime-list.service';
 import { Movie } from './movie';
 import { MovieService } from './movie.service';
 
@@ -16,11 +17,15 @@ export class MovieListComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private genreService: GenreService
+    private genreService: GenreService,
+    private showtimeService: ShowtimeListService
   ) {}
 
   movies: Movie[];
   genres: Genre[];
+  filters = {
+    keyword: ''
+  }
 
   ngOnInit(): void {
     this.movieService
@@ -46,6 +51,28 @@ export class MovieListComponent implements OnInit {
       .getAllMovies()
       .subscribe((result) => (this.movies = result));
     }
+  }
+
+  listMovies() {
+    this.movieService.getAllMovies().subscribe(
+      data => this.movies = this.filterMovies(data)
+    )
+  }
+
+  filterMovies(movies: Movie[]) {
+    return movies.filter((m) => {
+      return m.name.toLowerCase().includes(this.filters.keyword.toLowerCase());
+    })
+  }
+
+  btnClick = () => {
+    console.log("Go to showtimes!");
+  };
+
+  redirectToMovieShowtimes(event: any) {
+    console.log(event)
+    const movieId = event.target.value;
+    this.showtimeService.getMovieShowtimes(movieId);
   }
 
 }

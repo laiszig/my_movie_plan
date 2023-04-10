@@ -1,0 +1,25 @@
+
+<br>
+<br>
+<br>
+<br>
+
+<table>
+    <thead>
+      <tr>
+        <th>Movie</th>
+        <th>Showtime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let showtime of showtimes">
+        <td>{{ showtime.movie.name }}</td>
+        <td>{{ showtime.time }}</td>
+        <td>
+          <!-- <button (click)="btnClick()"  type="button" class="btn btn-success">
+            Add to Cart
+          </button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
