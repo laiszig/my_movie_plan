@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/showtime")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ShowtimeController {
 
     private final ShowtimeService showtimeService;
@@ -20,28 +20,28 @@ public class ShowtimeController {
         this.showtimeService = showtimeService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/showtime")
     public List<Showtime> getAll() {
         return showtimeService.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/showtime")
     public ResponseEntity<Showtime> addShowtime(@RequestBody Showtime showtime) {
         showtimeService.saveShowtime(showtime);
         return new ResponseEntity<>(showtime, HttpStatus.CREATED);
     }
 
-    @PostMapping("/search")
+    @PostMapping("/showtime/search")
     public List<Showtime> searchByShowtime(@RequestBody ShowtimeRequest request) {
         return showtimeService.findByShowtime(request.getTime());
     }
 
-    @PostMapping("/search/{movieId}")
+    @GetMapping("/showtime/search/{movieId}")
     public List<Showtime> searchByMovieId(@PathVariable Integer movieId) {
         return showtimeService.findByMovieId(movieId);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/showtime/{id}")
     public ResponseEntity<Showtime> deleteMovie(@PathVariable Integer id) {
         try {
             showtimeService.deleteShowtime(id);

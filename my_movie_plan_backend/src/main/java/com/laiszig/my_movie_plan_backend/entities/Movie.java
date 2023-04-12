@@ -39,4 +39,8 @@ public class Movie {
 
     @Column(name = "movie_status")
     private Boolean status = true;
+
+    public Movie(String idStr) {
+        this.id = Integer.parseInt(idStr);
+    }
 }
