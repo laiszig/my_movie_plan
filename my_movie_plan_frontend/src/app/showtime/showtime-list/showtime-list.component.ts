@@ -59,6 +59,9 @@ export class ShowtimeListComponent {
     }
   }
 
+  btnClick = () => {
+    console.log("Go to cart!");
+  };
   
 
 }

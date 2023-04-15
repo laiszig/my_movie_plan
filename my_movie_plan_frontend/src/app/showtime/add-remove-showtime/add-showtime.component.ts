@@ -50,23 +50,6 @@ export class AddShowtimeComponent {
     );
   }
 
-  // onSubmit() {
-  //   const selectedMovie = this.movies.find(movie => movie.id === parseInt(this.form.movie));
-  //   const showtime = {
-
-  //     movie: selectedMovie,
-  //     time: this.form.time
-  //   };
-  //   this.addShowtime.addShowtime(showtime).subscribe(
-  //     data => {
-  //       console.log("Processed")
-  //     },
-  //     error => {
-  //       console.log("Error processing")
-  //       console.log(error)
-  //     }
-  //   );
-
   btnClick = () => {
     console.log("Showtime Added!");
   };

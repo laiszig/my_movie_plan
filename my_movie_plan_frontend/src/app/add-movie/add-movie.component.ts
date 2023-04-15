@@ -63,7 +63,6 @@ export class AddMovieComponent {
       name: ''
     };
     this.form.genre = genre;
-    
   };
   
 }

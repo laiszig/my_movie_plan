@@ -65,10 +65,6 @@ export class MovieListComponent implements OnInit {
     })
   }
 
-  btnClick = () => {
-    console.log("Go to showtimes!");
-  };
-
   redirectToMovieShowtimes(event: any) {
     console.log(event)
     const movieId = event.target.value;
