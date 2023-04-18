@@ -4,7 +4,7 @@
 <br>
 <br>
 
-<h1>Movie List Component</h1>
+<h1>On Theatres</h1>
 
 <select (change)="genreSelection($event)">
     <option value="0">All Genres</option>
@@ -29,6 +29,7 @@
       <th>Description</th>
       <th>Director</th>
       <th>Language</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -40,17 +41,7 @@
       <td>{{ movie.director }}</td>
       <td>{{ movie.language }}</td>
       <td>
-        <!-- <button (click)="btnClick(product.id, product.name, product.price)"  type="button" class="btn btn-success">
-          Add to Cart
-        </button> -->
-        <!-- <button (click)="btnClick()"  type="button" class="btn btn-success">
-          View Showtimes
-        </button> -->
-
-        <!-- <button onclick="window.location.href = 'http://localhost:4200/listshowtime';">Click me</button> -->
-
         <button (click)="redirectToMovieShowtimes($event);" value="{{movie.id}}">View Showtimes</button>
-
       </td>
     </tr>
   </tbody>

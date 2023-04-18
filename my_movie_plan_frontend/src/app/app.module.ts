@@ -10,6 +10,8 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { UpdateMovieComponent } from './update-movie/update-movie.component';
 import { AddShowtimeComponent } from './showtime/add-remove-showtime/add-showtime.component';
 import { ShowtimeListComponent } from './showtime/showtime-list/showtime-list.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ShowtimeListComponent } from './showtime/showtime-list/showtime-list.co
     AddMovieComponent,
     UpdateMovieComponent,
     AddShowtimeComponent,
-    ShowtimeListComponent
+    ShowtimeListComponent,
+    ImageSliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
