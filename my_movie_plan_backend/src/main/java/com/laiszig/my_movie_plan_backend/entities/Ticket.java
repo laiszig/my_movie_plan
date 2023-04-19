@@ -20,13 +20,12 @@ public class Ticket {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "movie_id", nullable = true)
-    private Movie movie;
-
-    @ManyToOne
     @JoinColumn(name = "showtime_id", nullable = true)
     private Showtime showtime;
 
     @Column(name = "ticket_price")
     private BigDecimal price;
+
+    @Column(name = "ticket_quantity")
+    private Integer quantity;
 }
