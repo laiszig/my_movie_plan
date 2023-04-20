@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +12,9 @@ import { AddShowtimeComponent } from './showtime/add-remove-showtime/add-showtim
 import { ShowtimeListComponent } from './showtime/showtime-list/showtime-list.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { SecurityInterceptorService } from './security-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
     UpdateMovieComponent,
     AddShowtimeComponent,
     ShowtimeListComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     FormsModule,
     NgImageSliderModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

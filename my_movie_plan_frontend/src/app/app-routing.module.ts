@@ -5,13 +5,17 @@ import { AddShowtimeComponent } from './showtime/add-remove-showtime/add-showtim
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { UpdateMovieComponent } from './update-movie/update-movie.component';
 import { ShowtimeListComponent } from './showtime/showtime-list/showtime-list.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {"path":"movies", component: MovieListComponent},
   {"path": "addmovie", component: AddMovieComponent},
   {"path": "updatemovie/:id", component: UpdateMovieComponent},
   {"path": "addshowtime", component: AddShowtimeComponent},
-  {"path": "listshowtime", component: ShowtimeListComponent}
+  {"path": "listshowtime", component: ShowtimeListComponent},
+  {"path":"register",component:RegisterComponent},
+  {"path":"login",component:LoginComponent}
 ];
 
 @NgModule({
