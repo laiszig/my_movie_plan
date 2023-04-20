@@ -1,6 +1,6 @@
 package com.laiszig.my_movie_plan_backend.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
