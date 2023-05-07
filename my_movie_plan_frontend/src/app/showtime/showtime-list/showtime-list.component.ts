@@ -66,6 +66,7 @@ export class ShowtimeListComponent {
     let cartItem = new CartItem();
     cartItem.id = showtime.id;
     cartItem.productName = showtime.movie.name;
+    cartItem.time = showtime.time;
 
     cartItem.quantity = 1;
     cartItem.price = 10;

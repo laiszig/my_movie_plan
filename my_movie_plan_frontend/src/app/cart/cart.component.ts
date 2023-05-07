@@ -76,8 +76,10 @@ export class CartComponent implements OnInit {
   saveCart() {
     this.cartService.saveCart;
   }
-  
+
   btnClick() {
+    alert("Tá pago!!");
+    this.clearCart(this.cartItems)
     //this.router.navigateByUrl('/purchase');
   };
 }
