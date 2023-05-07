@@ -27,30 +27,31 @@ export class CartComponent implements OnInit {
     private currencyPipe: CurrencyPipe
   ) {}
 
-  items: CartItem[];
+  cartItems: CartItem[];
   item: CartItem;
 
   ngOnInit(): void {
-    this.items = this.cartService.loadCart();
-    console.log(this.items);
+    this.cartItems = this.cartService.loadCart();
+    console.log("--")
+    console.log(this.cartItems);
   }
 
   //----- remove specific item
   removeFromCart(cartItem: CartItem) {
     console.log('remove item clicked');
     this.cartService.removeItem(cartItem);
-    this.items = this.cartService.loadCart();
+    this.cartItems = this.cartService.loadCart();
   }
 
-  //----- clear cart items
-  clearCart(items: CartItem[]) {
-    this.cartService.clearCart(items);
-    this.items = [...this.cartService.loadCart()];
+  //----- clear cart cartItems
+  clearCart(cartItems: CartItem[]) {
+    this.cartService.clearCart(cartItems);
+    this.cartItems = [...this.cartService.loadCart()];
   }
 
   //----- calculate total
   get total() {
-    const calculatePrice = this.items.reduce((prevVal: any, currentVal) => {
+    const calculatePrice = this.cartItems.reduce((prevVal: any, currentVal) => {
       let totalOrderItem = currentVal.quantity * currentVal.price;
       return prevVal + totalOrderItem;
     }, 0);
@@ -75,8 +76,8 @@ export class CartComponent implements OnInit {
   saveCart() {
     this.cartService.saveCart;
   }
-
+  
   btnClick() {
-    this.router.navigateByUrl('/purchase');
+    //this.router.navigateByUrl('/purchase');
   };
 }

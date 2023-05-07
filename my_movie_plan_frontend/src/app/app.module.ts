@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SecurityInterceptorService } from './security-interceptor.service';
 import { CurrencyPipe } from '@angular/common';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CurrencyPipe } from '@angular/common';
     ShowtimeListComponent,
     ImageSliderComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
