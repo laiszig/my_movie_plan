@@ -7,6 +7,7 @@ import { UpdateMovieComponent } from './update-movie/update-movie.component';
 import { ShowtimeListComponent } from './showtime/showtime-list/showtime-list.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {"path":"movies", component: MovieListComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {"path": "addshowtime", component: AddShowtimeComponent},
   {"path": "listshowtime", component: ShowtimeListComponent},
   {"path":"register",component:RegisterComponent},
-  {"path":"login",component:LoginComponent}
+  {"path":"login",component:LoginComponent},
+  {"path":"cart", component:CartComponent}
 ];
 
 @NgModule({

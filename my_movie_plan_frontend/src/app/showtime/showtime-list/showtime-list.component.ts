@@ -4,6 +4,8 @@ import { Movie } from 'src/app/movie-list/movie';
 import { MovieService } from 'src/app/movie-list/movie.service';
 import { Showtime } from '../showtime';
 import { ShowtimeListService } from './showtime-list.service';
+import { CartService } from 'src/app/cart/cart.service';
+import { CartItem } from 'src/app/cartItem';
 
 @Component({
   selector: 'app-showtime-list',
@@ -16,7 +18,8 @@ export class ShowtimeListComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private showtimeService: ShowtimeListService
+    private showtimeService: ShowtimeListService,
+    private cartService: CartService
   ) {}
 
   movies: Movie[];
@@ -59,8 +62,16 @@ export class ShowtimeListComponent {
     }
   }
 
-  btnClick = () => {
-    console.log("Go to cart!");
+  btnClick = (showtime: Showtime) => {
+    let cartItem = new CartItem();
+    cartItem.id = showtime.id;
+    cartItem.productName = showtime.movie.name;
+
+    cartItem.quantity = 1;
+    cartItem.price = 10;
+
+    this.cartService.addToCart(cartItem);
+
   };
   
 

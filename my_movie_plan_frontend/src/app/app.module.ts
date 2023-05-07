@@ -15,6 +15,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SecurityInterceptorService } from './security-interceptor.service';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { SecurityInterceptorService } from './security-interceptor.service';
     FormsModule,
     NgImageSliderModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptorService, multi: true }],
+  providers: [CurrencyPipe, { provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

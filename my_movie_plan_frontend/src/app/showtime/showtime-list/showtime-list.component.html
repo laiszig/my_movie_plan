@@ -17,9 +17,10 @@
         <td>{{ showtime.movie.name }}</td>
         <td>{{ showtime.time }}</td>
         <td>
-          <button (click)="btnClick()"  type="button" class="btn btn-success">
-            Get Tickets!
+          <button (click)="btnClick( showtime )" type="button" class="btn btn-success">
+            Add to cart!
           </button>
+
         </td>
       </tr>
     </tbody>
