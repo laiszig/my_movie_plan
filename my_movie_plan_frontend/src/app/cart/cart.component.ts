@@ -80,6 +80,6 @@ export class CartComponent implements OnInit {
   btnClick() {
     alert("Tá pago!!");
     this.clearCart(this.cartItems)
-    //this.router.navigateByUrl('/purchase');
+    this.router.navigateByUrl('/purchase');
   };
 }

@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { SecurityInterceptorService } from './security-interceptor.service';
 import { CurrencyPipe } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CartComponent } from './cart/cart.component';
     ImageSliderComponent,
     RegisterComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
