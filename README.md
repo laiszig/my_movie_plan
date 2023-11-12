@@ -4,7 +4,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/laiszig/my_movie_plan?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/laiszig/my_movie_plan?style=for-the-badge)
 
-<img src="my_movie_plan" alt="Frontend image">
+<img src="my_movie_plan.png" alt="Frontend image">
 
 ### This project was done as part of the Simplilearn FSD Master Course.
 
